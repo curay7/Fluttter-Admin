@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: "/home",
+      initialRoute: "/login",
       getPages: customAppRouter(),
       theme: ThemeData(
         pageTransitionsTheme: PageTransitionsTheme(

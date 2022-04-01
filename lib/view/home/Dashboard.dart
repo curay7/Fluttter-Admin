@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:web_flutter/view/home/widgets/DashboardBarChart1.dart';
 import 'package:web_flutter/view/home/widgets/DashboardDataTable.dart';
 
 import './widgets/InfoCard.dart';
@@ -10,7 +11,7 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(40, 0, 40, 0),
+      margin: EdgeInsets.fromLTRB(40, 0, 20, 0),
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -54,7 +55,7 @@ class Dashboard extends StatelessWidget {
             Row(
               children: [
                 Expanded(flex: 1, child: DashboardBarChart()),
-                Expanded(flex: 1, child: Text(""))
+                Expanded(flex: 2, child: DashboardBarChart1())
               ],
             ),
             DashboardDataTable()

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 dashboardAppBar(context) {
   var screenSize = MediaQuery.of(context).size;
@@ -43,7 +44,9 @@ dashboardAppBar(context) {
               width: screenSize.width / 50,
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Get.toNamed('/login');
+              },
               child: Text(
                 'Login',
                 style: TextStyle(color: Colors.grey),

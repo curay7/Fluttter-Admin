@@ -21,7 +21,10 @@ class _DashboardDataTableState extends State<DashboardDataTable> {
         columns: const [
           DataColumn(label: Text('ID')),
           DataColumn(label: Text('Name')),
-          DataColumn(label: Text('Price'))
+          DataColumn(label: Text('Price')),
+          DataColumn(label: Text('Sales')),
+          DataColumn(label: Text('Available')),
+          DataColumn(label: Text('Edit'))
         ],
         columnSpacing: 100,
         horizontalMargin: 10,
@@ -40,7 +43,10 @@ class MyData extends DataTableSource {
       (index) => {
             "id": index,
             "title": "Item $index",
-            "price": Random().nextInt(10000)
+            "price": Random().nextInt(10000),
+            "Sales": Random().nextInt(10000),
+            "Available": Random().nextInt(10000),
+            "Edit": Random().nextInt(10000)
           });
 
   @override
@@ -55,6 +61,9 @@ class MyData extends DataTableSource {
       DataCell(Text(_data[index]['id'].toString())),
       DataCell(Text(_data[index]["title"])),
       DataCell(Text(_data[index]["price"].toString())),
+      DataCell(Text(_data[index]["Sales"].toString())),
+      DataCell(Text(_data[index]["Available"].toString())),
+      DataCell(Text(_data[index]["Edit"].toString()))
     ]);
   }
 }

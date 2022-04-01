@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:easy_sidemenu/easy_sidemenu.dart';
+import 'package:get/get.dart';
 import 'package:web_flutter/view/home/Dashboard.dart';
+import 'package:web_flutter/view/home/DashboardUser.dart';
 
 import 'widgets/AppBar.dart';
 
@@ -37,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
           SideMenu(
             controller: page,
             style: SideMenuStyle(
-              openSideMenuWidth: 250,
+              openSideMenuWidth: 225,
               displayMode: SideMenuDisplayMode.auto,
               hoverColor: Colors.red[100],
               selectedColor: Colors.red[800],
@@ -67,21 +69,29 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 'Lone',
-                style: TextStyle(fontSize: 15),
+                style: TextStyle(fontSize: 10),
               ),
             ),
             items: [
+              // SideMenuItem(
+              //   priority: 0,
+              //   title: 'Overview',
+              //   onTap: () {
+              //     page.jumpToPage(0);
+              //   },
+              //   icon: Icon(Icons.trending_up),
+              // ),
               SideMenuItem(
                 priority: 0,
-                title: 'Overview',
+                title: 'Dashboard',
                 onTap: () {
                   page.jumpToPage(0);
                 },
-                icon: Icon(Icons.trending_up),
-                // badgeContent: Text(
-                //   '3',
-                //   style: TextStyle(color: Colors.white),
-                // ),
+                icon: Icon(Icons.home),
+                badgeContent: Text(
+                  '3',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
               SideMenuItem(
                 priority: 1,
@@ -118,7 +128,9 @@ class _MyHomePageState extends State<MyHomePage> {
               SideMenuItem(
                 priority: 6,
                 title: 'Exit',
-                onTap: () async {},
+                onTap: () async {
+                  Get.toNamed('/login');
+                },
                 icon: Icon(Icons.exit_to_app),
               ),
             ],
@@ -128,15 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
               controller: page,
               children: [
                 Dashboard(),
-                Container(
-                  color: Colors.white,
-                  child: Center(
-                    child: Text(
-                      'Page\n   2',
-                      style: TextStyle(fontSize: 35),
-                    ),
-                  ),
-                ),
+                DashboardUser(),
                 Container(
                   color: Colors.white,
                   child: Center(
