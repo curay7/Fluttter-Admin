@@ -64,14 +64,13 @@ class _DashboardUserState extends State<DashboardUser> {
     _expanded = List.generate(_currentPerPage!, (index) => false);
 
     setState(() => _isLoading = true);
-    Future.delayed(Duration(seconds: 3)).then((value) {
-      _sourceOriginal.clear();
-      _sourceOriginal.addAll(_generateData(n: random.nextInt(10000)));
-      _sourceFiltered = _sourceOriginal;
-      _total = _sourceFiltered.length;
-      _source = _sourceFiltered.getRange(0, _currentPerPage!).toList();
-      setState(() => _isLoading = false);
-    });
+
+    _sourceOriginal.clear();
+    _sourceOriginal.addAll(_generateData(n: random.nextInt(10000)));
+    _sourceFiltered = _sourceOriginal;
+    _total = _sourceFiltered.length;
+    _source = _sourceFiltered.getRange(0, _currentPerPage!).toList();
+    setState(() => _isLoading = false);
   }
 
   _resetData({start: 0}) async {
@@ -119,85 +118,17 @@ class _DashboardUserState extends State<DashboardUser> {
           return Dialog(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.0)), //this right here
-            child: Container(
-              padding: EdgeInsets.all(40.0),
-              child: Column(
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(20),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: TextFormField(
-                            initialValue: 'Input text',
-                            decoration: InputDecoration(
-                              labelText: 'Label text',
-                              border: OutlineInputBorder(),
-                            ),
-                          ),
-                        ),
-                        Padding(padding: EdgeInsets.only(left: 30)),
-                        Expanded(
-                          flex: 1,
-                          child: TextFormField(
-                            initialValue: 'Input text',
-                            decoration: InputDecoration(
-                              labelText: 'Label text',
-                              border: OutlineInputBorder(),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(20),
-                    child: TextFormField(
-                      initialValue: 'Input text',
-                      decoration: InputDecoration(
-                        labelText: 'Label text',
-                        border: OutlineInputBorder(),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(20),
-                    child: TextFormField(
-                      initialValue: 'Input text',
-                      decoration: InputDecoration(
-                        labelText: 'Label text',
-                        border: OutlineInputBorder(),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(20),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: TextFormField(
-                            initialValue: 'Input text',
-                            decoration: InputDecoration(
-                              labelText: 'Label text',
-                              border: OutlineInputBorder(),
-                            ),
-                          ),
-                        ),
-                        Padding(padding: EdgeInsets.only(left: 30)),
-                        Expanded(
-                          flex: 1,
-                          child: TextFormField(
-                            initialValue: 'Input text',
-                            decoration: InputDecoration(
-                              labelText: 'Label text',
-                              border: OutlineInputBorder(),
-                            ),
-                          ),
-                        ),
-                        Padding(padding: EdgeInsets.only(left: 30)),
-                        Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(40),
+              child: Container(
+                padding: EdgeInsets.all(40.0),
+                child: Column(
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(20),
+                      child: Row(
+                        children: [
+                          Expanded(
                             flex: 1,
                             child: TextFormField(
                               initialValue: 'Input text',
@@ -205,25 +136,96 @@ class _DashboardUserState extends State<DashboardUser> {
                                 labelText: 'Label text',
                                 border: OutlineInputBorder(),
                               ),
-                            ))
-                      ],
+                            ),
+                          ),
+                          Padding(padding: EdgeInsets.only(left: 30)),
+                          Expanded(
+                            flex: 1,
+                            child: TextFormField(
+                              initialValue: 'Input text',
+                              decoration: InputDecoration(
+                                labelText: 'Label text',
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        FlatButton(
-                            child: Text('Yes'),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            }),
-                        FlatButton(
-                            child: Text('No'),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            })
-                      ])
-                ],
+                    Container(
+                      padding: EdgeInsets.all(20),
+                      child: TextFormField(
+                        initialValue: 'Input text',
+                        decoration: InputDecoration(
+                          labelText: 'Label text',
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(20),
+                      child: TextFormField(
+                        initialValue: 'Input text',
+                        decoration: InputDecoration(
+                          labelText: 'Label text',
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(20),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: TextFormField(
+                              initialValue: 'Input text',
+                              decoration: InputDecoration(
+                                labelText: 'Label text',
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
+                          ),
+                          Padding(padding: EdgeInsets.only(left: 30)),
+                          Expanded(
+                            flex: 1,
+                            child: TextFormField(
+                              initialValue: 'Input text',
+                              decoration: InputDecoration(
+                                labelText: 'Label text',
+                                border: OutlineInputBorder(),
+                              ),
+                            ),
+                          ),
+                          Padding(padding: EdgeInsets.only(left: 30)),
+                          Expanded(
+                              flex: 1,
+                              child: TextFormField(
+                                initialValue: 'Input text',
+                                decoration: InputDecoration(
+                                  labelText: 'Label text',
+                                  border: OutlineInputBorder(),
+                                ),
+                              ))
+                        ],
+                      ),
+                    ),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          FlatButton(
+                              child: Text('Yes'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              }),
+                          FlatButton(
+                              child: Text('No'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              })
+                        ])
+                  ],
+                ),
               ),
             ),
           );

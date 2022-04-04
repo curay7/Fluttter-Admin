@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:web_flutter/router.dart';
+import 'package:web_flutter/routes/router.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: "/login",
+      initialRoute: "/home",
       getPages: customAppRouter(),
       theme: ThemeData(
         pageTransitionsTheme: PageTransitionsTheme(

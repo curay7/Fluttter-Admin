@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:web_flutter/controller/UserController.dart';
+import 'package:web_flutter/controller/UserController.dart';
 
-class AuthLogin extends StatelessWidget {
-  const AuthLogin({Key? key}) : super(key: key);
+class AuthLogin extends StatefulWidget {
+  AuthLogin({Key? key}) : super(key: key);
+
+  @override
+  _AuthLoginState createState() => _AuthLoginState();
+}
+
+class _AuthLoginState extends State<AuthLogin> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  final UserController userController = Get.put(UserController());
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +48,7 @@ class AuthLogin extends StatelessWidget {
                         Container(
                           padding: EdgeInsets.only(top: 100),
                           child: TextFormField(
+                            controller: _emailController,
                             decoration: InputDecoration(
                                 hintText: "Email",
                                 border: UnderlineInputBorder()),
@@ -45,6 +57,7 @@ class AuthLogin extends StatelessWidget {
                         Container(
                           padding: EdgeInsets.only(top: 30),
                           child: TextFormField(
+                            controller: _passwordController,
                             decoration: InputDecoration(
                                 hintText: "Password",
                                 border: UnderlineInputBorder()),
@@ -67,11 +80,13 @@ class AuthLogin extends StatelessWidget {
                           child: ElevatedButton(
                             child: const Text('Login'),
                             onPressed: () async {
-                              SharedPreferences prefs =
-                                  await SharedPreferences.getInstance();
-                              prefs.clear();
-                              prefs.setString('username', 'sampleValue');
-                              Get.toNamed('/home');
+                              // SharedPreferences prefs =
+                              //     await SharedPreferences.getInstance();
+                              // prefs.clear();
+                              // prefs.setString('username', 'sampleValue');
+                              UserController().login(_emailController.text,
+                                  _passwordController.text);
+                              //Get.toNamed('/home');
                               // print(nameController.text);
                               // print(passwordController.text);
                             },

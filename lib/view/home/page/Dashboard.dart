@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:web_flutter/view/home/widgets/DashboardBarChart1.dart';
 import 'package:web_flutter/view/home/widgets/DashboardDataTable.dart';
 
-import './widgets/InfoCard.dart';
-import 'widgets/DashboardBarChart.dart';
+import '../widgets/InfoCard.dart';
+import '../widgets/DashboardBarChart.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
-
+  // ignore: todo
+  //TODO: Fix The Scroll Bar
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(40, 0, 20, 0),
+      margin: EdgeInsets.fromLTRB(40, 40, 20, 40),
       child: SingleChildScrollView(
         child: Column(
           children: [

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:easy_sidemenu/easy_sidemenu.dart';
 import 'package:get/get.dart';
-import 'package:web_flutter/view/home/Dashboard.dart';
-import 'package:web_flutter/view/home/DashboardUser.dart';
+import 'package:web_flutter/controller/UserController.dart';
+import 'package:web_flutter/view/home/page/Dashboard.dart';
+import 'package:web_flutter/view/home/page/DashboardUser.dart';
 
-import 'widgets/AppBar.dart';
+final UserController userController = Get.put(UserController());
 
 class DashboardHome extends StatelessWidget {
   const DashboardHome({Key? key}) : super(key: key);
@@ -12,167 +12,130 @@ class DashboardHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyHomePage(
-      title: "Side Nav",
+      // ignore: invalid_use_of_protected_member
+      title: userController.user.value.toString(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-
   final String title;
+
+  MyHomePage({Key? key, required this.title}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  PageController page = PageController();
+  int _selectedDestination = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: dashboardAppBar(context),
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          SideMenu(
-            controller: page,
-            style: SideMenuStyle(
-              openSideMenuWidth: 225,
-              displayMode: SideMenuDisplayMode.auto,
-              hoverColor: Colors.red[100],
-              selectedColor: Colors.red[800],
-              selectedTitleTextStyle: TextStyle(color: Colors.white),
-              selectedIconColor: Colors.white,
-              // backgroundColor: Colors.amber
-              // openSideMenuWidth: 200
-            ),
-            title: Column(
-              children: [
-                // ConstrainedBox(
-                //   constraints: BoxConstraints(
-                //     maxHeight: 150,
-                //     maxWidth: 150,
-                //   ),
-                //   child: Image.asset(
-                //     'assets/images/easy_sidemenu.png',
-                //   ),
-                // ),
-                // Divider(
-                //   indent: 8.0,
-                //   endIndent: 8.0,
-                // ),
-              ],
-            ),
-            footer: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Lone',
-                style: TextStyle(fontSize: 10),
-              ),
-            ),
-            items: [
-              // SideMenuItem(
-              //   priority: 0,
-              //   title: 'Overview',
-              //   onTap: () {
-              //     page.jumpToPage(0);
-              //   },
-              //   icon: Icon(Icons.trending_up),
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
+
+    return Row(
+      children: [
+        Drawer(
+          child: ListView(
+            // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 30, 16, 70),
+                  child: Image.asset(
+                    'assets/logo.png',
+                    width: 100,
+                    height: 70,
+                  )),
+              // Divider( Home favorite trending_up supervisor_account file_copy_rounded download settings exit_to_app
+              //   height: 1,
+              //   thickness: 1,
               // ),
-              SideMenuItem(
-                priority: 0,
-                title: 'Dashboard',
-                onTap: () {
-                  page.jumpToPage(0);
-                },
-                icon: Icon(Icons.home),
-                badgeContent: Text(
-                  '3',
-                  style: TextStyle(color: Colors.white),
-                ),
+              ListTile(
+                leading: Icon(Icons.trending_up),
+                title: Text('Over All'),
+                selected: _selectedDestination == 0,
+                onTap: () => selectDestination(0),
               ),
-              SideMenuItem(
-                priority: 1,
-                title: 'Users',
-                onTap: () {
-                  page.jumpToPage(1);
-                },
-                icon: Icon(Icons.supervisor_account),
+              ListTile(
+                leading: Icon(Icons.supervisor_account),
+                title: Text('User Data'),
+                selected: _selectedDestination == 1,
+                onTap: () => selectDestination(1),
               ),
-              SideMenuItem(
-                priority: 2,
-                title: 'Files',
-                onTap: () {
-                  page.jumpToPage(2);
-                },
-                icon: Icon(Icons.file_copy_rounded),
+              ListTile(
+                leading: Icon(Icons.file_copy_rounded),
+                title: Text('Products'),
+                selected: _selectedDestination == 2,
+                onTap: () => selectDestination(2),
               ),
-              SideMenuItem(
-                priority: 3,
-                title: 'Download',
-                onTap: () {
-                  page.jumpToPage(3);
-                },
-                icon: Icon(Icons.download),
+              ListTile(
+                leading: Icon(Icons.download),
+                title: Text('Import'),
+                selected: _selectedDestination == 2,
+                onTap: () => selectDestination(2),
               ),
-              SideMenuItem(
-                priority: 4,
-                title: 'Settings',
-                onTap: () {
-                  page.jumpToPage(4);
-                },
-                icon: Icon(Icons.settings),
+              ListTile(
+                leading: Icon(Icons.arrow_upward),
+                title: Text('Export'),
+                selected: _selectedDestination == 2,
+                onTap: () => selectDestination(2),
               ),
-              SideMenuItem(
-                priority: 6,
-                title: 'Exit',
-                onTap: () async {
+              Divider(
+                height: 1,
+                thickness: 1,
+              ),
+              Padding(padding: EdgeInsets.only(top: 70)),
+              ListTile(
+                leading: Icon(Icons.exit_to_app),
+                title: Text('Log Out'),
+                selected: _selectedDestination == 3,
+                onTap: () {
+                  userController.user.value = [];
                   Get.toNamed('/login');
                 },
-                icon: Icon(Icons.exit_to_app),
               ),
             ],
           ),
-          Expanded(
-            child: PageView(
-              controller: page,
-              children: [
-                Dashboard(),
-                DashboardUser(),
-                Container(
-                  color: Colors.white,
-                  child: Center(
-                    child: Text(
-                      'Page\n   3',
-                      style: TextStyle(fontSize: 35),
-                    ),
-                  ),
-                ),
-                Container(
-                  color: Colors.white,
-                  child: Center(
-                    child: Text(
-                      'Page\n   4',
-                      style: TextStyle(fontSize: 35),
-                    ),
-                  ),
-                ),
-                Container(
-                  color: Colors.white,
-                  child: Center(
-                    child: Text(
-                      'Page\n   5',
-                      style: TextStyle(fontSize: 35),
-                    ),
-                  ),
-                ),
-              ],
+        ),
+        VerticalDivider(
+          width: 1,
+          thickness: 1,
+        ),
+        Expanded(
+          child: Scaffold(
+            appBar: AppBar(
+              title: Text(widget.title),
+              automaticallyImplyLeading: false,
+              // leading: IconButton(
+              //   icon: Icon(Icons.ac_unit),
+              //   onPressed: () => Navigator.of(context).pop(),
+              // ),
             ),
+            body: _page(),
           ),
-        ],
-      ),
+        ),
+      ],
     );
+  }
+
+  _page() {
+    if (_selectedDestination == 0) {
+      return Dashboard();
+    } else if (_selectedDestination == 1) {
+      return DashboardUser();
+    } else if (_selectedDestination == 2) {
+      return Text("Page Three");
+    } else if (_selectedDestination == 3) {
+      return Text("Page Four");
+    }
+  }
+
+  void selectDestination(int index) {
+    setState(() {
+      _selectedDestination = index;
+    });
   }
 }
