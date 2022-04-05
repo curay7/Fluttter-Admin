@@ -213,12 +213,12 @@ class _DashboardUserState extends State<DashboardUser> {
                     Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          FlatButton(
+                          ElevatedButton(
                               child: Text('Yes'),
                               onPressed: () {
                                 Navigator.of(context).pop();
                               }),
-                          FlatButton(
+                          ElevatedButton(
                               child: Text('No'),
                               onPressed: () {
                                 Navigator.of(context).pop();

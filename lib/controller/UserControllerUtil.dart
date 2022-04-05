@@ -20,15 +20,7 @@ class UserControllerUtil extends ChangeNotifier {
     });
 
     if (response.statusCode == 201) {
-      String token = response.body;
-      //await saveToken(token);
-      // _isAuthenticated = true;
-      print("Util");
-      print("Util");
       controllerUser.user.add(response.body);
-      print(controllerUser.user.value);
-      // print("Util");
-
       notifyListeners();
       return true;
     }
@@ -41,22 +33,4 @@ class UserControllerUtil extends ChangeNotifier {
 
     return false;
   }
-
-  // saveToken(String token) async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   await prefs.setString('token', token);
-  // }
-
-  // Future<String?> getToken() async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   return prefs.getString('token');
-  // }
-
-  // logout() async {
-  //   _isAuthenticated = false;
-  //   notifyListeners();
-
-  //   final prefs = await SharedPreferences.getInstance();
-  //   await prefs.clear();
-  // }
 }

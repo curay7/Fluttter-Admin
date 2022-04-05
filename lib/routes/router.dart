@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:web_flutter/helper/widgets/LargeScreen.dart';
 import 'package:web_flutter/routes/middleware.dart';
 
@@ -17,15 +16,16 @@ customAppRouter() {
     GetPage(
         name: "/login",
         page: () => AuthLogin(),
-        middlewares: [secondMiddleware()]),
+        middlewares: [SecondMiddleware()]),
     GetPage(
         name: "/register",
         page: () => AuthRegister(),
-        middlewares: [secondMiddleware()]),
+        middlewares: [SecondMiddleware()]),
     GetPage(
-        name: "/home",
-        page: () => DashboardHome(),
-        middlewares: [FirstMiddleware()]),
+      name: "/home",
+      page: () => DashboardHome(),
+      middlewares: [FirstMiddleware()],
+    ),
     GetPage(name: '/side', page: () => LargeScreen())
   ];
   // if (user == 'sampleValue') {

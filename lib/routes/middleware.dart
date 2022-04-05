@@ -48,7 +48,7 @@ class FirstMiddleware extends GetMiddleware {
   }
 }
 
-class secondMiddleware extends GetMiddleware {
+class SecondMiddleware extends GetMiddleware {
   @override
   int? get priority => 2;
 

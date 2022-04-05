@@ -13,24 +13,18 @@ class _DashboardDataTableState extends State<DashboardDataTable> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 30.0),
-      child: PaginatedDataTable(
-        source: _data,
-        header: const Text('My Products'),
-        columns: const [
-          DataColumn(label: Text('ID')),
-          DataColumn(label: Text('Name')),
-          DataColumn(label: Text('Price')),
-          DataColumn(label: Text('Sales')),
-          DataColumn(label: Text('Available')),
-          DataColumn(label: Text('Edit'))
-        ],
-        columnSpacing: 100,
-        horizontalMargin: 10,
-        rowsPerPage: 8,
-        showCheckboxColumn: false,
-      ),
+    return PaginatedDataTable(
+      header: Text("Products"),
+      rowsPerPage: 7,
+      columns: [
+        DataColumn(label: Text('ID')),
+        DataColumn(label: Text('Name')),
+        DataColumn(label: Text('Price')),
+        DataColumn(label: Text('Sales')),
+        DataColumn(label: Text('Available')),
+        DataColumn(label: Text('Edit'))
+      ],
+      source: _data,
     );
   }
 }

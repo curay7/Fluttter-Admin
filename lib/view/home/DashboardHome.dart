@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:web_flutter/controller/UserController.dart';
 import 'package:web_flutter/view/home/page/Dashboard.dart';
+import 'package:web_flutter/view/home/page/DashboardProduct.dart';
 import 'package:web_flutter/view/home/page/DashboardUser.dart';
 
 final UserController userController = Get.put(UserController());
@@ -32,9 +33,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final textTheme = theme.textTheme;
-
     return Row(
       children: [
         Drawer(
@@ -54,34 +52,34 @@ class _MyHomePageState extends State<MyHomePage> {
               //   thickness: 1,
               // ),
               ListTile(
-                leading: Icon(Icons.trending_up),
+                leading: Icon(Icons.dashboard),
                 title: Text('Over All'),
                 selected: _selectedDestination == 0,
                 onTap: () => selectDestination(0),
               ),
               ListTile(
-                leading: Icon(Icons.supervisor_account),
-                title: Text('User Data'),
+                leading: Icon(Icons.contact_page),
+                title: Text('Invoice'),
                 selected: _selectedDestination == 1,
                 onTap: () => selectDestination(1),
               ),
               ListTile(
-                leading: Icon(Icons.file_copy_rounded),
+                leading: Icon(Icons.menu_book),
                 title: Text('Products'),
                 selected: _selectedDestination == 2,
                 onTap: () => selectDestination(2),
               ),
               ListTile(
-                leading: Icon(Icons.download),
-                title: Text('Import'),
-                selected: _selectedDestination == 2,
-                onTap: () => selectDestination(2),
+                leading: Icon(Icons.mark_chat_unread_outlined),
+                title: Text('Message'),
+                selected: _selectedDestination == 3,
+                onTap: () => selectDestination(3),
               ),
               ListTile(
-                leading: Icon(Icons.arrow_upward),
-                title: Text('Export'),
-                selected: _selectedDestination == 2,
-                onTap: () => selectDestination(2),
+                leading: Icon(Icons.notifications_outlined), //Icons.file_upload
+                title: Text('Notifications'),
+                selected: _selectedDestination == 4,
+                onTap: () => selectDestination(4),
               ),
               Divider(
                 height: 1,
@@ -106,14 +104,14 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         Expanded(
           child: Scaffold(
-            appBar: AppBar(
-              title: Text(widget.title),
-              automaticallyImplyLeading: false,
-              // leading: IconButton(
-              //   icon: Icon(Icons.ac_unit),
-              //   onPressed: () => Navigator.of(context).pop(),
-              // ),
-            ),
+            // appBar: AppBar(
+            //   title: Text(widget.title),
+            //   automaticallyImplyLeading: false,
+            // leading: IconButton(
+            //   icon: Icon(Icons.ac_unit),
+            //   onPressed: () => Navigator.of(context).pop(),
+            // ),
+            // ),
             body: _page(),
           ),
         ),
@@ -127,7 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
     } else if (_selectedDestination == 1) {
       return DashboardUser();
     } else if (_selectedDestination == 2) {
-      return Text("Page Three");
+      return DashboardProduct();
     } else if (_selectedDestination == 3) {
       return Text("Page Four");
     }

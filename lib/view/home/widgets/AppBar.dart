@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 dashboardAppBar(context) {
   var screenSize = MediaQuery.of(context).size;
   return PreferredSize(
-    preferredSize: Size(screenSize.width, 1000),
+    preferredSize: Size(screenSize.width, 300),
     child: Container(
       color: Colors.transparent,
       child: Padding(
