@@ -22,7 +22,9 @@ class InfoCard extends StatelessWidget {
       child: InkWell(
         onTap: () {},
         child: Container(
-          height: 136,
+          //268x116
+          height: 116,
+          width: 268,
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: Colors.white,

@@ -16,6 +16,12 @@ class MyApp extends StatelessWidget {
       initialRoute: "/home",
       getPages: customAppRouter(),
       theme: ThemeData(
+        //brightness: Brightness.dark,
+        // textTheme: Theme.of(context).textTheme.apply(
+        //       bodyColor: Colors.pink,
+        //       displayColor:Color(0xff3A36DB),
+        //     ),
+        primaryColor: Color(0xff3A36DB),
         pageTransitionsTheme: PageTransitionsTheme(
           builders: {
             TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
