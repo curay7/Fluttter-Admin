@@ -19,7 +19,7 @@ customAppRouter() {
     GetPage(
       name: "/home",
       page: () => DashboardHome(),
-      middlewares: [FirstMiddleware()],
+      //middlewares: [FirstMiddleware()],
     ),
     GetPage(name: '/side', page: () => LargeScreen())
   ];

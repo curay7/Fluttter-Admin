@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:web_flutter/controller/UserController.dart';
 import 'package:web_flutter/view/home/page/DarhboardChat.dart';
 import 'package:web_flutter/view/home/page/Dashboard.dart';
+import 'package:web_flutter/view/home/page/DashboardFirstPage.dart';
 import 'package:web_flutter/view/home/page/DashboardProduct.dart';
 import 'package:web_flutter/view/home/page/DashboardUser.dart';
 
@@ -34,47 +35,54 @@ int _selectedDestination = 0;
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          width: 215,
-          child: Drawer(
-            child: Card(
+    return Scaffold(
+      // appBar: AppBar(
+      //   title: Text(widget.title),
+      //   automaticallyImplyLeading: false,
+      // leading: IconButton(
+      //   icon: Icon(Icons.ac_unit),
+      //   onPressed: () => Navigator.of(context).pop(),
+      // ),
+      // ),
+      body: Row(
+        children: [
+          Container(
+            color: Colors.white,
+            width: 200,
+            child: Drawer(
               child: ListView(
                 // Important: Remove any padding from the ListView.
                 padding: EdgeInsets.zero,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.fromLTRB(83, 30, 65, 25),
+                    padding: EdgeInsets.fromLTRB(50, 30, 50, 40),
                     child: Container(
-                        width: 70,
-                        height: 64,
-                        child: Column(
-                          children: [
-                            Expanded(
-                              child: Container(
-                                child: Text(
-                                  "Logo",
-                                  style: TextStyle(
-                                      fontFamily: 'DMSans',
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold),
-                                ),
+                      width: 70,
+                      height: 64,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Ink(
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [Color(0xff374ABE), Color(0xff64B6FF)],
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
                               ),
+                              borderRadius: BorderRadius.circular(80.0)),
+                          child: Container(
+                            constraints: BoxConstraints(
+                                maxWidth: 150.0, minHeight: 50.0),
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Wons",
+                              textAlign: TextAlign.center,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
                             ),
-                            Expanded(
-                              child: Container(
-                                child: Text(
-                                  "Wons",
-                                  style: TextStyle(
-                                      fontFamily: 'DMSans',
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            )
-                          ],
-                        )),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
 
                   TextButton(
@@ -255,33 +263,27 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-        ),
-        Expanded(
-          child: Scaffold(
-            // appBar: AppBar(
-            //   title: Text(widget.title),
-            //   automaticallyImplyLeading: false,
-            // leading: IconButton(
-            //   icon: Icon(Icons.ac_unit),
-            //   onPressed: () => Navigator.of(context).pop(),
-            // ),
-            // ),
-            body: _page(),
+          Expanded(
+            child: _page(),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
   _page() {
     if (_selectedDestination == 0) {
-      return Text("Test"); //Dashboard();
+      return DashboardFirstPage(); //Dashboard();
     } else if (_selectedDestination == 1) {
       return DashboardUser();
     } else if (_selectedDestination == 2) {
       return DashboardProduct();
     } else if (_selectedDestination == 3) {
       return DashboardChat();
+    } else {
+      return Center(
+        child: Text("Fix Soon"),
+      );
     }
   }
 
@@ -291,8 +293,6 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 }
-
-AppBarButton(String textName, Icon customIcon) {}
 
 class ActiveAppButton extends StatelessWidget {
   final String textName;
@@ -312,7 +312,7 @@ class ActiveAppButton extends StatelessWidget {
               topRight: Radius.circular(5.0),
               bottomRight: Radius.circular(5.0),
             ),
-            color: Colors.grey[200],
+            color: Colors.grey[300],
           ),
           padding: EdgeInsets.fromLTRB(23, 11, 0, 11),
           child: customIcon,
