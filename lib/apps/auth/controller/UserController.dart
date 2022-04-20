@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:web_flutter/controller/UserControllerUtil.dart';
+import 'package:web_flutter/apps/auth/service/UserControllerUtil.dart';
 
 var userUtil = UserControllerUtil();
 

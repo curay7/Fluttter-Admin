@@ -209,22 +209,42 @@ class DashboardFirstPage extends StatelessWidget {
                                           margin: EdgeInsets.fromLTRB(
                                               0, 12, 15, 12),
                                           child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Text("Total Sales"),
+                                            children: <Widget>[
+                                              //TODO:fix text align center
+                                              Text(
+                                                "Should be left",
+                                                textAlign: TextAlign.left,
+                                              ),
                                               SizedBox(
                                                 height: 10,
                                               ),
                                               Text(
                                                 "14,000,000",
+                                                textAlign: TextAlign.left,
                                                 style: TextStyle(
                                                     fontSize: 25,
                                                     fontWeight:
                                                         FontWeight.bold),
-                                              )
+                                              ),
                                             ],
                                           ),
+                                          // child: Column(
+                                          //   mainAxisAlignment:
+                                          //       MainAxisAlignment.start,
+                                          //   children: [
+                                          // Text("Total Sales"),
+                                          // SizedBox(
+                                          //   height: 10,
+                                          // ),
+                                          // Text(
+                                          //   "14,000,000",
+                                          //   style: TextStyle(
+                                          //       fontSize: 25,
+                                          //       fontWeight:
+                                          //           FontWeight.bold),
+                                          // )
+                                          //   ],
+                                          // ),
                                         ),
                                         Spacer(),
                                         Text("Two")

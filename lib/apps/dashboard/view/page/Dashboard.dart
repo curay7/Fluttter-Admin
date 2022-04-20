@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:web_flutter/view/home/widgets/Chart1.dart';
-import 'package:web_flutter/view/home/widgets/Table.dart';
+import 'package:web_flutter/apps/dashboard/view/widgets/Chart1.dart';
+import 'package:web_flutter/apps/dashboard/view/widgets/Table.dart';
 import 'package:intl/intl.dart';
 
 import '../widgets/InfoCard.dart';

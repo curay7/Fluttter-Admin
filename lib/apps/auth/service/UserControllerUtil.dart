@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:web_flutter/controller/UserController.dart';
+import 'package:web_flutter/apps/auth/controller/UserController.dart';
 
 final UserController controllerUser = Get.put(UserController());
 

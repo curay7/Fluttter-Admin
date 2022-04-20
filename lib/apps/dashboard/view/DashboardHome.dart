@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:web_flutter/controller/UserController.dart';
-import 'package:web_flutter/view/home/page/DarhboardChat.dart';
-import 'package:web_flutter/view/home/page/Dashboard.dart';
-import 'package:web_flutter/view/home/page/DashboardFirstPage.dart';
-import 'package:web_flutter/view/home/page/DashboardProduct.dart';
-import 'package:web_flutter/view/home/page/DashboardUser.dart';
+import 'package:web_flutter/apps/auth/controller/UserController.dart';
+import 'package:web_flutter/apps/dashboard/view/page/DarhboardChat.dart';
+import 'package:web_flutter/apps/dashboard/view/page/Dashboard.dart';
+import 'package:web_flutter/apps/dashboard/view/page/DashboardFirstPage.dart';
+import 'package:web_flutter/apps/dashboard/view/page/DashboardProduct.dart';
+import 'package:web_flutter/apps/dashboard/view/page/DashboardUser.dart';
 
 final UserController userController = Get.put(UserController());
 
