@@ -18,6 +18,7 @@ class FirstMiddleware extends GetMiddleware {
     if (isLogin) {
       return RouteSettings(name: '/login');
     }
+    return null;
   }
 
   //This function will be called  before anything created we can use it to
@@ -62,6 +63,7 @@ class SecondMiddleware extends GetMiddleware {
     if (isLogin) {
       return RouteSettings(name: '/home');
     }
+    return null;
   }
 
   //This function will be called  before anything created we can use it to
